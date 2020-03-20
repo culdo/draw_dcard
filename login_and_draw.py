@@ -34,6 +34,7 @@ def login_and_draw(email, password):
             EC.presence_of_element_located((By.CSS_SELECTOR, "a[title='抽卡']")))
         browser.get('https://dcard.tw/dcard')
         time.sleep(3)
+        print(browser.execute_script("return document.documentElement.outerHTML"))
         invite_bt = wait.until(
             EC.presence_of_element_located((By.XPATH, "//button[text()='送出邀請']")))
         invite_bt.click()
@@ -52,6 +53,7 @@ def login_and_draw(email, password):
 
 
 if __name__ == '__main__':
+    # login_and_draw(*sys.argv[1:])
     schedule.every().day.at("00:52").do(login_and_draw, *sys.argv[1:])
 
     while True:
