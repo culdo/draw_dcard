@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from email_notification import send_mail
 from selenium.common.exceptions import TimeoutException
 import schedule
 
@@ -58,6 +59,8 @@ def login_and_draw(email, password):
             EC.presence_of_element_located((By.XPATH, "//button[text()='完成']")))
         submit_msg.click()
         time.sleep(random.randint(2, 5))
+    except Exception as e:
+        send_mail("wuorsut@gmail.com", "Auto Draw Dcard", "error: %s" % str(e))
     finally:
         browser.get('https://www.dcard.tw/signout')
         browser.quit()
