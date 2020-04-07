@@ -20,7 +20,7 @@ curl_cmd = "curl --http2 -X GET -H 'Host:www.dcard.tw' " \
 
 def login_and_draw(email, password):
     options = webdriver.ChromeOptions()
-    # options.add_argument('headless')
+    options.add_argument('headless')
     options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                          'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36')
     browser = webdriver.Chrome(chrome_options=options)
